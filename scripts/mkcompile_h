@@ -5,8 +5,6 @@ ARCH=$2
 SMP=$3
 PREEMPT=$4
 CC=$5
-BUILD_USER=mirage
-BUILD_HOST=aurora
 
 vecho() { [ "${quiet}" = "silent_" ] || echo "$@" ; }
 
@@ -76,7 +74,7 @@ UTS_TRUNCATE="cut -b -$UTS_LEN"
   if [ "$BUILD_USER" != "" ]; then
     echo \#define LINUX_COMPILE_BY \"$BUILD_USER\"
   else
-    echo \#define LINUX_COMPILE_BY \"`whoami`\"
+    echo \#define LINUX_COMPILE_BY \"`uname`\"
   fi
 
   if [ "$BUILD_HOST" != "" ]; then
